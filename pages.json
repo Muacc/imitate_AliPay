@@ -1,0 +1,70 @@
+{
+	"globalStyle": {
+		"navigationStyle": "custom",
+		"app-plus": {
+			"bounce": "none",
+			"animationType": "fade-in",
+			"animationDuration": 50
+		}
+	},
+	"pages": [{
+		"path": "pages/index/index"
+	}, {
+		"path": "pages/my/my"
+	}, {
+		"path": "pages/login/login/index1"
+	}, {
+		"path": "pages/my/setup"
+	}, {
+		"path": "pages/index/search"
+	}, {
+		"path": "pages/gjj/gjj"
+	}, {
+		"path": "pages/gjj/gjj-details"
+	}    ,{
+            "path" : "pages/gjj/gjj-server",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/gjj/gjj-my",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/gjj/moreUser",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/gjj/gjj-zhuanyi",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/Face/Face",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ]
+}
