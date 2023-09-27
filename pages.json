@@ -1,4 +1,7 @@
 {
+	"easycom": {
+		"^u-(.*)": "@/uni_modules/uview-ui/components/u-$1/u-$1.vue"
+	},
 	"globalStyle": {
 		"navigationStyle": "custom",
 		"app-plus": {
@@ -21,50 +24,31 @@
 		"path": "pages/gjj/gjj"
 	}, {
 		"path": "pages/gjj/gjj-details"
-	}    ,{
-            "path" : "pages/gjj/gjj-server",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/gjj/gjj-my",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/gjj/moreUser",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/gjj/gjj-zhuanyi",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/Face/Face",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ]
+	}, {
+		"path": "pages/gjj/gjj-server"
+	}, {
+		"path": "pages/gjj/gjj-my"
+	}, {
+		"path": "pages/gjj/moreUser"
+	}, {
+		"path": "pages/gjj/gjj-zhuanyi"
+	}, {
+		"path": "pages/Face/Face"
+	}, {
+		"path": "pages/gjj/ssb"
+	}, {
+		"path": "pages/index/Search2"
+	}, {
+		"path": "pages/more/more"
+	}, {
+		"path": "pages/ThreeGold/ThreeGold"
+	}, {
+		"path": "pages/CockGold/CockGold"
+	}, {
+		"path": "pages/userBook/index"
+	}, {
+		"path": "pages-two/checking/checking"
+	}, {
+		"path": "pages/Face/ssbFace"
+	}]
 }

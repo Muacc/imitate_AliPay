@@ -58,7 +58,6 @@ export default {
 					that.$store.state.BH = res.statusBarHeight;
 				}
 			});
-
 		}
 		// #endif
 	}
@@ -67,7 +66,7 @@ export default {
 
 <style lang="scss">
 /*每个页面公共css */
-
+@import '@/uni_modules/uview-ui/index.scss';
 .bgf {
 	background: #fff;
 }
@@ -91,4 +90,3 @@ export default {
 	font-size: $fz12;
 }
 </style>
-<style></style>

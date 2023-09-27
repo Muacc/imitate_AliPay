@@ -7,6 +7,8 @@ import * as db from './db.js' //引入common
 const methodsToken = [
 	'user.accountdata',
 	'user.info',
+	'user.billdetails',
+	'user.accountdetails'
 ];
 
 const post = (method, data, callback, complete) => {
@@ -379,3 +381,6 @@ export const getOrderPintuanTeamInfo = (data, callback) => post('pintuan.pintuan
 
 //获取APP版本
 export const accountdata = (data, callback) => post('user.accountdata', data, callback);
+
+export const UserGold = (data, callback) => post('user.billdetails', data, callback);
+export const AccountDetail = (data, callback) => post('user.accountdetails', data, callback);

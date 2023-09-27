@@ -1,7 +1,12 @@
 import Vue from 'vue'
 import App from './App'
-import {router,RouterMount} from './router.js'  //路径换成自己的
+import {
+	router,
+	RouterMount
+} from './router.js' //路径换成自己的
+import uView from '@/uni_modules/uview-ui'
 Vue.use(router)
+Vue.use(uView)
 
 import * as Api from './config/api.js'
 
@@ -22,11 +27,11 @@ Vue.prototype.$store = store;
 App.mpType = 'app'
 
 const app = new Vue({
-    ...App
+	...App
 })
 
 // #ifdef H5
-RouterMount(app,router,'#app')
+RouterMount(app, router, '#app')
 // #endif
 
 // #ifndef H5

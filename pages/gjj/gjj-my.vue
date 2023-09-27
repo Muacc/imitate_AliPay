@@ -3,7 +3,7 @@
 		<view class="top-nav" ref="topNav">
 			<nav :style="{ height: $store.state.BH + 10 + 'px' }"></nav>
 			<view class="jiaonang" :style="{ top: $store.state.BH + 20 + 'px' }">
-				<view class="left">
+				<view class="left" @click="back()">
 					<image src="/static/img/gjj-img/zzz.png" mode=""></image>
 					我的账户
 				</view>
@@ -84,6 +84,9 @@ export default {
 		}
 	},
 	methods: {
+		back() {
+			uni.navigateBack();
+		},
 		Go(e) {
 			if (e) {
 				uni.navigateTo({
@@ -145,6 +148,7 @@ export default {
 			align-items: center;
 			justify-content: space-between;
 			.left {
+				line-height: 1.2;
 				display: flex;
 				align-items: center;
 				font-size: 36rpx;

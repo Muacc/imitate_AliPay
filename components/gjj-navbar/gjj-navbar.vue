@@ -28,7 +28,6 @@ export default {
 		height() {
 			let num1 = parseInt(this.$store.state.topH);
 			let num2 = parseInt(this.$store.state.BH + 10);
-			console.log(num1, num2);
 			let num3 = num1 + num2 + 'px';
 			let str = `height:${num3}`;
 			return str;
@@ -57,11 +56,16 @@ export default {
 		align-items: center;
 		justify-content: space-between;
 		.nav-left {
+			line-height: 1.2;
 			display: flex;
 			align-items: center;
+			font-size: 36rpx;
+			color: #ffffff;
+			font-weight: 400;
 			image {
 				width: 19rpx;
 				height: 33rpx;
+				margin-right: 10rpx;
 			}
 		}
 		.nav-right {

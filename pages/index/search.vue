@@ -5,7 +5,7 @@
 			<image class="back" src="/static/img/my-img/zjt.png" @click="back"></image>
 			<view class="input">
 				<image class="search-icon" src="/static/img/my-img/search.png" mode=""></image>
-				<input class="search-input" placeholder-class="search-iput-placeholder" type="text" placeholder="全国房贷利息计算器" v-model="keyWord" />
+				<input @input="changeContent" class="search-input" placeholder-class="search-iput-placeholder" type="text" placeholder="全国房贷利息计算器" v-model="keyWord" />
 				<view class="line-y" v-if="isSearch"></view>
 				<view class="line2-y" v-else></view>
 				<view class="click" v-if="isSearch" @click="subSearch()">搜索</view>
@@ -19,7 +19,7 @@
 		</view>
 		<view v-if="isSearch">
 			<view class="search-hots">
-				<view class="hots-item" v-for="(item, index) in searchHots" :key="index">
+				<view class="hots-item" v-for="(item, index) in searchHots" :key="index" @click="upKey(item)">
 					{{ item }}
 				</view>
 			</view>
@@ -29,7 +29,7 @@
 					<image class="del-histry" src="/static/img/my-img/sc.png" mode=""></image>
 				</view>
 				<view class="search-histry-list">
-					<view class="search-histry-item" v-for="(item, index) in searchHistry" :key="index">
+					<view class="search-histry-item" v-for="(item, index) in searchHistry" :key="index" @click="upKey(item.name)">
 						{{ item.name }}
 					</view>
 					<view class="search-histry-more">
@@ -121,7 +121,7 @@
 						</view>
 					</view>
 					<view class="MP-line"></view>
-					<view class="MP-item">
+					<view class="MP-item" @click="Go('/pages/gjj/ssb')">
 						<image class="MP-item-left" src="/static/img/my-img/ssb.png"></image>
 						<view class="MP-item-right">
 							<view class="MP-name">
@@ -288,7 +288,8 @@ export default {
 			],
 			isSearch: false,
 			keyWord: '',
-			userData: {}
+			userData: {},
+			Exp: '/我\的\不\动\产/'
 		};
 	},
 	async onLoad() {
@@ -306,6 +307,10 @@ export default {
 		back() {
 			uni.navigateBack();
 		},
+		upKey(e) {
+			this.keyWord = e;
+			this.changeContent();
+		},
 		getUserInfo() {
 			this.$api.userInfo({}, (res) => {
 				this.userData = res.data;
@@ -313,6 +318,20 @@ export default {
 		},
 		subSearch() {
 			this.isSearch = false;
+		},
+		changeContent() {
+			let data = [
+				{
+					title: '我的不动产',
+					data: [1, 2, 3, 4, 5, 6]
+				}
+			];
+			if (this.keyWord !== '') {
+				let result = data.filter((item) => item.title.includes(this.keyWord)).map((item) => item.data);
+				console.log(this.keyWord);
+			} else {
+				console.log('关键词为空，不进行匹配');
+			}
 		},
 		clear() {
 			this.isSearch = true;
