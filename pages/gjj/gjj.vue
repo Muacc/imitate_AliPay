@@ -18,20 +18,29 @@
 			<image src="/static/img/gjj-img/bg.png" class="bg" mode=""></image>
 			<view class="info-box">
 				<view class="left">
-					<view class="h3">您好，{{ userData.username }}</view>
+					<view class="h3" v-if="!isShowData">您好，{{ userData.username }}</view>
+					<view class="h3" v-else>您好，{{ userData.true_name }}</view>
 					<view class="h5">账号:{{ userData.account }}</view>
 				</view>
 				<image class="right" v-if="!isShowData" src="/static/img/gjj-img/by.png" @click="changeYJ"></image>
 				<image class="right zy" v-else src="/static/img/gjj-img/zy.png" @click="changeYJ"></image>
 			</view>
 			<view class="info-money">
-				<view class="item">
+				<view class="item" v-if="isShowData">
 					<view class="title">账户余额</view>
 					{{ userData.balance }}元
 				</view>
-				<view class="item">
+				<view class="item" v-else>
+					<view class="title">账户余额</view>
+					*** 元
+				</view>
+				<view class="item" v-if="isShowData">
 					<view class="title">当月账户缴额</view>
 					{{ userData.pay_money }}元
+				</view>
+				<view class="item" v-else>
+					<view class="title">当月账户缴额</view>
+					*** 元
 				</view>
 			</view>
 		</view>

@@ -92,7 +92,7 @@ export default {
 				{
 					title: '转账',
 					url: '/static/img/index-img/7.png'
-				},
+				}, 
 				{
 					title: '余额宝',
 					url: '/static/img/index-img/8.png'
@@ -113,7 +113,7 @@ export default {
 					title: '花呗',
 					url: '/static/img/index-img/14.png'
 				},
-				{
+				{ 
 					title: '借呗',
 					url: '/static/img/index-img/5.png'
 				},

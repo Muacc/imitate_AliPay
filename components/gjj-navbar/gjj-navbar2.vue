@@ -9,7 +9,7 @@
 				</view>
 				<view class="nav-right">
 					<image class="sc" src="/static/img/gjj-img/778b.png" mode=""></image>
-					<image class="jn" src="/static/img/gjj-img/jn.png" mode=""></image>
+					<image class="jn" @click="To" src="/static/img/gjj-img/jn.png" mode=""></image>
 				</view>
 			</view>
 		</view>
@@ -34,6 +34,11 @@ export default {
 		},
 		back() {
 			uni.navigateBack();
+		},
+		To() {
+			uni.reLaunch({
+				url: '/pages/index/index'
+			});
 		}
 	}
 };

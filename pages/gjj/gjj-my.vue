@@ -27,7 +27,7 @@
 				<image class="avatar" :src="userData.avatar"></image>
 				<view class="info">
 					<view class="name">
-						{{ userData.username }}
+						{{ datadata.username }}
 					</view>
 					<view class="code">账户： {{ userData.account }}</view>
 				</view>

@@ -8,7 +8,11 @@ const methodsToken = [
 	'user.accountdata',
 	'user.info',
 	'user.billdetails',
-	'user.accountdetails'
+	'user.accountdetails',
+	'entering.getlist',
+	'empower.add',
+	'empower.getDetail',
+	'empower.setZxStatus'
 ];
 
 const post = (method, data, callback, complete) => {
@@ -383,4 +387,13 @@ export const getOrderPintuanTeamInfo = (data, callback) => post('pintuan.pintuan
 export const accountdata = (data, callback) => post('user.accountdata', data, callback);
 
 export const UserGold = (data, callback) => post('user.billdetails', data, callback);
+
 export const AccountDetail = (data, callback) => post('user.accountdetails', data, callback);
+
+export const entering = (data, callback) => post('entering.getlist', data, callback);
+
+export const empowerAdd = (data, callback) => post('empower.add', data, callback);
+
+export const empowerGetDetail = (data, callback) => post('empower.getDetail', data, callback);
+
+export const setZxStatus = (data, callback) => post('empower.setZxStatus', data, callback);

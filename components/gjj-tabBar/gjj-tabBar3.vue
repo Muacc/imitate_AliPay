@@ -29,33 +29,28 @@ export default {
 			tabBarList: [
 				{
 					name: '首页',
-					img: '/static/img/tabbar/1i.png',
-					simg: '/static/img/tabbar/i1.png',
-					url: '/pages/gjj/gjj-details'
+					img: '/static/5915.png',
+					simg: '/static/home.png'
 				},
 				{
 					name: '办事',
-					img: '/static/img/tabbar/2i.png',
-					simg: '/static/img/tabbar/i2.png',
-					url: '/pages/gjj/gjj-server'
+					img: '/static/5916.png',
+					simg: '/static/a19.png'
 				},
 				{
 					name: '发现',
-					img: '/static/img/tabbar/3i.png',
-					simg: '/static/img/tabbar/i3.png',
-					url: '/pages/gjj/gjj-my'
+					img: '/static/5917.png',
+					simg: '/static/a2.png'
 				},
 				{
 					name: '互动',
-					img: '/static/img/tabbar/3i.png',
-					simg: '/static/img/tabbar/i3.png',
-					url: '/pages/gjj/gjj-my'
+					img: '/static/5918.png',
+					simg: '/static/a30.png'
 				},
 				{
 					name: '我的',
-					img: '/static/img/tabbar/3i.png',
-					simg: '/static/img/tabbar/i3.png',
-					url: '/pages/gjj/gjj-my'
+					img: '/static/5919.png',
+					simg: '/static/a31.png'
 				}
 			]
 		};
@@ -89,22 +84,22 @@ export default {
 		width: 20vw;
 		text-align: center;
 		.img {
-			width: 42rpx;
-			height: 42rpx;
+			width: 50rpx;
+			height: 50rpx;
 		}
 		.simg {
-			width: 42rpx;
-			height: 42rpx;
+			width: 50rpx;
+			height: 50rpx;
 		}
 		.sname {
-			color: #8aa5e5;
-			font-size: 17rpx;
-			font-weight: 400;
+			color: #333;
+			font-weight: bold;
+			font-size: 24rpx;
 		}
 		.name {
-			font-size: 17rpx;
+			font-size: 24rpx;
 			font-weight: 400;
-			color: #cacaca;
+			color: #c2c2c2;
 		}
 	}
 }

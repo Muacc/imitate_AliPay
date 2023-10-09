@@ -250,7 +250,7 @@ export default {
 					@include flex;
 					justify-content: center;
 					align-items: center;
-					font-size: 16px;
+					font-size: 28rpx;
 					text-align: center;
 					/* #ifndef APP-NVUE */
 					display: block;

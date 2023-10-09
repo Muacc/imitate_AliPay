@@ -2,7 +2,7 @@
 	<view class="Content">
 		<view class="jn" :style="{ top: $store.state.BH + 10 + 'px' }">
 			<image class="sc" src="/static/img/gjj-img/887.png" mode=""></image>
-			<image class="gd" src="/static/img/gjj-img/46.png" mode=""></image>
+			<image class="gd" @click="toIndex" src="/static/img/gjj-img/46.png" mode=""></image>
 		</view>
 		<view v-if="time == 0" class="TopBg1"></view>
 		<view v-else-if="time == 1" class="TopBg2"></view>
@@ -199,6 +199,11 @@ export default {
 			if (this.current != e.currentIndex) {
 				this.current = e.currentIndex;
 			}
+		},
+		toIndex() {
+			uni.reLaunch({
+				url: '/pages/index/index'
+			});
 		}
 	}
 };
@@ -264,7 +269,7 @@ export default {
 	}
 
 	.Top {
-		padding: 87rpx 0 0 0;
+		padding: 70rpx 0 0 0;
 		margin: 0 auto;
 		width: 684rpx;
 		display: flex;
@@ -338,7 +343,7 @@ export default {
 	.TopTags {
 		display: flex;
 		justify-content: space-evenly;
-		margin: 47rpx 0 139rpx 0;
+		margin: 47rpx 0 127rpx 0;
 
 		.TagItem {
 			display: flex;
@@ -358,7 +363,7 @@ export default {
 		width: 200rpx;
 		height: 70rpx;
 		margin-left: 66rpx;
-		margin-bottom: 159rpx;
+		margin-bottom: 120rpx;
 		line-height: 50rpx;
 		font-size: 50rpx;
 		font-family: PingFang SC-Regular, PingFang SC;

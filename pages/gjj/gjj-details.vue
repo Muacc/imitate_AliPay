@@ -17,7 +17,7 @@
 						<image src="/static/img/gjj-img/zyj.png" class="zyj" v-else @click="showData"></image>
 					</view>
 					<view class="top-right-bottom" v-if="byj">******</view>
-					<view class="top-right-bottom" v-else>{{ userData.balance }}</view>
+					<view class="top-right-bottom" v-else>{{ datadata.balance }}</view>
 				</view>
 				<view class="user-status" v-if="isLoginTwo">
 					<view class="dot"></view>
@@ -82,7 +82,7 @@
 			<image class="more" src="/static/img/gjj-img/780.png" mode=""></image>
 		</view>
 		<image class="bottom-banner" src="/static/img/gjj-img/1118.png" mode=""></image>
-		<view class="bottom-center">
+		<view class="bottom-center"> 
 			<view class="p">该信息来源于上海市公积金管理中心</view>
 			<view class="p">中心电话：12329</view>
 		</view>

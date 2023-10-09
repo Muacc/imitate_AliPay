@@ -1,20 +1,6 @@
 <template>
 	<view class="main">
 		<navBar Title="服务"></navBar>
-		<!-- <view class="top-nav" ref="topNav">
-			<nav :style="{ height: $store.state.BH + 10 + 'px' }"></nav>
-			<view class="jiaonang" :style="{ top: $store.state.BH + 20 + 'px' }">
-				<view class="left">
-					<image src="/static/img/gjj-img/zzz.png" mode=""></image>
-					服务
-				</view>
-				<view class="right">
-					<image class="sc" src="/static/img/gjj-img/887.png" mode=""></image>
-					<image class="jn" src="/static/img/gjj-img/46.png" mode=""></image>
-				</view>
-			</view>
-		</view> -->
-		<view :style="{ height: Math.floor(topH) + 'px' }"></view>
 		<view class="big-box">
 			<view class="item-block" v-for="(item, index) in list" :key="index">
 				<view class="block-title">
@@ -22,7 +8,7 @@
 					{{ item.title }}
 				</view>
 				<view class="for-item">
-					<view class="small-item" v-for="(A, B) in item.chiderList" :key="B">
+					<view class="small-item" v-for="(A, B) in item.chiderList" :key="B" @click="Go(A.url)">
 						<image :src="A.img" mode=""></image>
 						<view class="name">
 							{{ A.name }}
@@ -48,7 +34,6 @@ export default {
 	},
 	data() {
 		return {
-			topH: '',
 			list: [
 				{
 					title: '信息查询',
@@ -88,8 +73,9 @@ export default {
 							img: '/static/img/gjj-img/f7.png'
 						},
 						{
-							name: '缴存明细',
-							img: '/static/img/gjj-img/f8.png'
+							name: '信息查询授权',
+							img: '/static/img/gjj-img/f8.png',
+							url: '/pages/infoQuery/index'
 						}
 					]
 				},
@@ -118,18 +104,14 @@ export default {
 			]
 		};
 	},
-	mounted() {
-		uni.createSelectorQuery()
-			.in(this)
-			.select('.top-nav')
-			.boundingClientRect((rect) => {
-				if (rect) {
-					this.topH = rect.height;
-				}
-			})
-			.exec();
-	},
-	methods: {}
+
+	methods: {
+		Go(e) {
+			uni.navigateTo({
+				url: e
+			});
+		}
+	}
 };
 </script>
 

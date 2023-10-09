@@ -119,9 +119,10 @@ page {
 	}
 }
 .setup-main {
+	margin-top: 35rpx;
 	.setup-list {
 		background-color: #fff;
-		margin: 11rpx 25rpx;
+		margin: 0 25rpx 22rpx;
 		border-radius: 15rpx;
 		.list-item {
 			display: flex;

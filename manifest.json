@@ -2,8 +2,8 @@
     "name" : "fzz",
     "appid" : "__UNI__EE9D86E",
     "description" : "fzz",
-    "versionName" : "2.0",
-    "versionCode" : 15,
+    "versionName" : "1.0",
+    "versionCode" : 10,
     "transformPx" : false,
     "uniStatistics" : {
         "enable" : false //全局关闭统计 

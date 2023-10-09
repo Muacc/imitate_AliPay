@@ -2,11 +2,15 @@
 	<view style="height: 112rpx">
 		<view class="tab-bar-components">
 			<view class="item" v-for="(A, B) in tabBarList" :key="B" @click="toTab(A, B)">
-				<image class="img" v-if="B == index" :src="A.img" mode=""></image>
+				<image class="img" :class="[index == 0 ? 'yes0' : 'no0']" v-if="B == index" :src="A.img" mode=""></image>
 				<image class="simg" v-else :src="A.simg" mode=""></image>
 				<view class="name" v-if="B !== index">
 					{{ A.name }}
 				</view>
+				<view class="name" :class="[B == index ? 'sname' : '']" v-else-if="index !== 0">
+					{{ A.name }}
+				</view>
+				<view class="name" v-else></view>
 			</view>
 		</view>
 	</view>
@@ -90,10 +94,19 @@ export default {
 			width: 40rpx;
 			height: 40rpx;
 		}
+		.no0 {
+			width: 40rpx;
+			height: 40rpx;
+		}
 		.name {
 			font-size: 18rpx;
 			font-weight: 400;
 			color: #666666;
+		}
+		.sname {
+			font-size: 18rpx;
+			font-weight: 400;
+			color: #3874f6;
 		}
 	}
 }

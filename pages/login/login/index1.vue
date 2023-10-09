@@ -1,8 +1,9 @@
 <template>
-	<view>
+	<view class="main">
 		<nav :style="{ height: $store.state.BH + 'px' }"></nav>
-		<input type="text" v-model="mobile" maxlength="11" />
-		<input type="text" v-model="password" />
+		<view style="height: 50px"></view>
+		<u--input placeholder="请输入账号" maxlength="11" border="surround" v-model="mobile"></u--input>
+		<u--input placeholder="请输入密码" type="password" border="surround" v-model="password"></u--input>
 		<button @click="login">登录</button>
 	</view>
 </template>
@@ -15,7 +16,7 @@ export default {
 			password: ''
 		};
 	},
-	
+
 	methods: {
 		login() {
 			this.$api.login(
@@ -35,4 +36,8 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.main {
+	margin: 0 50px;
+}
+</style>

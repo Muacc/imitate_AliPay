@@ -95,7 +95,7 @@ export default {
 						clearInterval(this.interval);
 						//todo返回上一页，传入完成状态
 						uni.redirectTo({
-							url: '/pages/gjj/ssb'
+							url: '/pages-two/checking/subOk'
 						});
 					}, 1000);
 				}

@@ -1,5 +1,5 @@
 <template>
-	<view class="main">
+	<view class="main" :style="[isSearch ? { backgroundImage: 'none' } : '']">
 		<nav :style="{ height: $store.state.BH + 10 + 'px' }"></nav>
 		<view class="top-search">
 			<image class="back" src="/static/img/my-img/zjt.png" @click="back"></image>
@@ -65,7 +65,7 @@
 					{{ item }}
 				</view>
 			</view>
-			<view class="user-box">
+			<view class="user-box" v-if="searchContent == '公积金'">
 				<view class="uesr-title">市民中心·公积金</view>
 				<view class="user-subtitle">官方服务 7×24 小时可办</view>
 				<view class="my-gjj">
@@ -73,7 +73,7 @@
 						<image class="avatar" :src="userData.avatar" mode=""></image>
 						<view class="gjj-info">
 							<view class="my-gjj-title">我的公积金</view>
-							<view class="data">{{ userData.username }}丨{{ userData.cert_number }}</view>
+							<view class="data">{{ userData.username }}丨{{ userData.cert_number_2 }}</view>
 						</view>
 					</view>
 					<view class="user-search">账户查询</view>
@@ -98,10 +98,10 @@
 					</view>
 				</view>
 			</view>
-			<view class="MP-gjj">
+			<view class="MP-gjj" v-if="searchContent == '公积金'">
 				<view class="page-item-dtitle">
 					<view class="page-item-title">
-						<text>公积金</text>
+						<text>{{ searchContent }}</text>
 						- 小程序
 					</view>
 					<view class="page-item-title-right">
@@ -121,26 +121,29 @@
 						</view>
 					</view>
 					<view class="MP-line"></view>
-					<view class="MP-item" @click="Go('/pages/gjj/ssb')">
-						<image class="MP-item-left" src="/static/img/my-img/ssb.png"></image>
-						<view class="MP-item-right">
-							<view class="MP-name">
-								随申办
-								<view class="MP-tags">政府</view>
-								<view class="MP-collect">已收藏</view>
-							</view>
-							<view class="MP-describe">随申办是服务于上海市民的政务小程序。</view>
-							<view class="use-number">
-								<view class="use-number-left">上海市大数据中心</view>
-								<view class="use-number-right">500万+人最近使用</view>
-							</view>
-							<view class="MP-item-main">
-								<view class="main-box">公积金查询</view>
-								<view class="main-box">个人租房提取公积金</view>
+					<view class="bdc">
+						<view class="MP-item" @click="Go('/pages/gjj/ssb')">
+							<image class="MP-item-left" src="/static/img/my-img/ssb.png"></image>
+							<view class="MP-item-right">
+								<view class="MP-name">
+									随申办
+									<view class="MP-tags">政府</view>
+									<view class="MP-collect">已收藏</view>
+								</view>
+								<view class="MP-describe">随申办是服务于上海市民的政务小程序。</view>
+								<view class="use-number">
+									<view class="use-number-left">上海市大数据中心</view>
+									<view class="use-number-right">500万+人最近使用</view>
+								</view>
+								<view class="MP-item-main">
+									<view class="main-box">我的不动产</view>
+									<view class="main-box">我的不动产查询</view>
+								</view>
 							</view>
 						</view>
+						<view class="line-x"></view>
 					</view>
-					<view class="MP-line"></view>
+
 					<view class="MP-item" @click="Go('/pages/gjj/gjj')">
 						<image class="MP-item-left" src="/static/img/my-img/zf1.png"></image>
 						<view class="MP-item-right">
@@ -162,10 +165,80 @@
 					</view>
 				</view>
 			</view>
+			<view class="MP-gjj" v-else>
+				<view class="page-item-dtitle">
+					<view class="page-item-title">
+						<text>{{ searchContent }}</text>
+						- 小程序
+					</view>
+					<view class="page-item-title-right">
+						全部
+						<image src="/static/img/my-img/hotyjt.png"></image>
+					</view>
+				</view>
+				<view class="MP-box">
+					<view class="bdc">
+						<view class="MP-item" @click="Go('/pages/gjj/ssb')">
+							<image class="MP-item-left" src="/static/img/my-img/ssb.png"></image>
+							<view class="MP-item-right">
+								<view class="MP-name">
+									随申办
+									<view class="MP-tags">政府</view>
+									<view class="MP-collect">已收藏</view>
+								</view>
+								<view class="MP-describe">随申办是服务于上海市民的政务小程序。</view>
+								<view class="use-number">
+									<view class="use-number-left">上海市大数据中心</view>
+									<view class="use-number-right">500万+人最近使用</view>
+								</view>
+								<view class="MP-item-main">
+									<view class="main-box">公积金查询</view>
+									<view class="main-box">个人租房提取公积金</view>
+								</view>
+							</view>
+						</view>
+						<view class="line-x"></view>
+						<view class="list-for-bdc">
+							<view class="list-for-bdc-item" v-for="(item, index) in bdcList" :key="index" @click="Go(item.url)">
+								<view class="list-for-bdc-flex">
+									<image class="bdc-left" :src="item.img" mode=""></image>
+									<view class="bdc-middle">
+										<view class="p1">
+											<view class="p1-left">
+												{{ item.name }}
+												<view class="bdc-tags">
+													{{ item.tags }}
+												</view>
+											</view>
+											<view class="p1-right"></view>
+										</view>
+										<view class="p2">
+											<text class="blue">{{ item.blue }}</text>
+											{{ item.subname }}
+										</view>
+										<view class="p3" v-if="item.bh">
+											包含
+											<text>我的不动产</text>
+											相关内容
+										</view>
+										<view class="p4">
+											上海市大数据中心
+											<view class="right">
+												{{ item.num }}
+											</view>
+										</view>
+									</view>
+								</view>
+								<view class="line-x"></view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
 			<view class="live">
 				<view class="page-item-dtitle">
 					<view class="page-item-title">
-						<text>公积金</text>
+						<text>{{ searchContent }}</text>
 						- 生活号
 					</view>
 					<view class="page-item-title-right">
@@ -178,7 +251,7 @@
 			<view class="vedio">
 				<view class="page-item-dtitle">
 					<view class="page-item-title">
-						<text>公积金</text>
+						<text>{{ searchContent }}</text>
 						- 视频
 					</view>
 					<view class="page-item-title-right">
@@ -191,7 +264,7 @@
 			<view class="vedio">
 				<view class="page-item-dtitle">
 					<view class="page-item-title">
-						<text>公积金</text>
+						<text>{{ searchContent }}</text>
 						- 文章
 					</view>
 					<view class="page-item-title-right">
@@ -204,7 +277,7 @@
 			<view class="vedio">
 				<view class="page-item-dtitle">
 					<view class="page-item-title">
-						<text>公积金</text>
+						<text>{{ searchContent }}</text>
 						- 问答
 					</view>
 					<view class="page-item-title-right">
@@ -217,7 +290,7 @@
 			<view class="vedio">
 				<view class="page-item-dtitle">
 					<view class="page-item-title">
-						<text>公积金</text>
+						<text>{{ searchContent }}</text>
 						- 芝麻企业信用
 					</view>
 					<view class="page-item-title-right">
@@ -236,6 +309,7 @@
 export default {
 	data() {
 		return {
+			searchContent: '公积金',
 			tabList: ['全部', '小程序', '生活号', '理财', '市民服务'],
 			searchHots: ['全国房贷计算器', '住房公积金', '全国社保查询'],
 			searchHistry: [
@@ -243,7 +317,7 @@ export default {
 					name: '公积金'
 				},
 				{
-					name: '全国房贷计算器'
+					name: '我的不动产'
 				},
 				{
 					name: '学历查询'
@@ -262,6 +336,51 @@ export default {
 				},
 				{
 					name: '微粒相机'
+				}
+			],
+			bdcList: [
+				{
+					img: '/static/img/bdc-search/1.png',
+					name: '我的不动产查询-上海市',
+					tags: '政府',
+					subname: '24小时在线查询',
+					url: '/pages/userBook/index'
+				},
+				{
+					img: '/static/img/bdc-search/2.png',
+					name: '上海不动产',
+					tags: '政府',
+					subname: '一键查询跑腿',
+					url: '/pages/userBook/index'
+				},
+				{
+					img: '/static/img/bdc-search/3.png',
+					name: '随申办不动产查询',
+					tags: '政府',
+					subname: '24小时在线查询',
+					url: '/pages/userBook/index'
+				},
+				{
+					img: '/static/img/bdc-search/4.png',
+					name: '个人住房房产税缴纳',
+					tags: '政府',
+					subname: '24小时在线查询',
+					bh: true
+				},
+				{
+					img: '/static/img/bdc-search/5.png',
+					name: '房产税查询',
+					tags: '政府',
+					subname: '在线查询房产税',
+					bh: true
+				},
+				{
+					img: '/static/img/bdc-search/6.png',
+					name: '不动产等级水电气过户-上海市',
+					tags: '政府',
+					blue: '不动产',
+					subname: '等级水电气过户',
+					num: '1000 + 人最近使用'
 				}
 			],
 			findListItem: [
@@ -286,7 +405,7 @@ export default {
 					tip: '全网热搜'
 				}
 			],
-			isSearch: false,
+			isSearch: true,
 			keyWord: '',
 			userData: {},
 			Exp: '/我\的\不\动\产/'
@@ -310,6 +429,7 @@ export default {
 		upKey(e) {
 			this.keyWord = e;
 			this.changeContent();
+			this.subSearch();
 		},
 		getUserInfo() {
 			this.$api.userInfo({}, (res) => {
@@ -318,6 +438,7 @@ export default {
 		},
 		subSearch() {
 			this.isSearch = false;
+			this.searchContent = this.keyWord;
 		},
 		changeContent() {
 			let data = [
@@ -335,6 +456,7 @@ export default {
 		},
 		clear() {
 			this.isSearch = true;
+			this.keyWord = '';
 		}
 	}
 };
@@ -360,7 +482,7 @@ page {
 	.top-search {
 		display: flex;
 		align-items: center;
-		margin: 0 19rpx 0 27rpx;
+		margin: 0 25rpx 0 27rpx;
 		.back {
 			width: 17rpx;
 			height: 28rpx;
@@ -370,7 +492,7 @@ page {
 			display: flex;
 			align-items: center;
 			padding: 9rpx 24rpx;
-			border: 2px solid #4174e5;
+			border: 0.5px solid #4174e5;
 			background: #ffffff;
 			border-radius: 12rpx;
 			flex: 1;
@@ -426,7 +548,7 @@ page {
 				border-radius: 50%;
 			}
 			.big-dot-black {
-				margin: 0 3rpx;
+				margin: 0 5rpx;
 				width: 8rpx;
 				height: 8rpx;
 				background-color: #333;
@@ -472,7 +594,7 @@ page {
 			.search-histry-item {
 				padding: 10rpx 15rpx;
 				margin-top: 15rpx;
-				margin-right: 15rpx;
+				margin-right: 16rpx;
 				font-weight: 400;
 				color: #333333;
 				font-size: 24rpx;
@@ -703,7 +825,7 @@ page {
 		}
 	}
 	.MP-gjj {
-		margin: 0 20rpx;
+		margin: 33rpx 20rpx 0;
 
 		.MP-box {
 			background-color: #fff;
@@ -830,6 +952,83 @@ page {
 						font-size: 24rpx;
 						color: #153f9a;
 						font-weight: 400;
+					}
+				}
+			}
+			.line-x {
+				height: 1rpx;
+				background-color: #f3f3f3;
+				margin: 20rpx 0;
+			}
+			.list-for-bdc {
+				.list-for-bdc-item {
+					.list-for-bdc-flex {
+						flex: 1;
+						display: flex;
+						align-items: center;
+
+						.bdc-left {
+							width: 78rpx;
+							height: 78rpx;
+							margin-right: 20rpx;
+						}
+						.bdc-middle {
+							flex: 1;
+							.p1 {
+								display: flex;
+								align-items: center;
+								justify-content: space-between;
+								.p1-left {
+									align-items: center;
+									display: flex;
+									font-weight: bold;
+									color: #333333;
+									font-size: 30rpx;
+									.bdc-tags {
+										margin-left: 10rpx;
+										padding: 0 7rpx;
+										font-size: 20rpx;
+										font-weight: 400;
+										color: #3874f6;
+										border-radius: 5rpx;
+										border: 1rpx solid #c3cad2;
+									}
+								}
+
+								.p1-right {
+								}
+							}
+							.p2 {
+								margin: 10rpx 0;
+								font-weight: 400;
+								color: #666666;
+								font-size: 23rpx;
+								.blue {
+									color: #2251d3;
+								}
+							}
+							.p3 {
+								padding: 2rpx 8rpx;
+								font-weight: 400;
+								color: #666666;
+								font-size: 19rpx;
+								margin-bottom: 10rpx;
+								text {
+									color: #2251d3;
+								}
+							}
+							.p4 {
+								font-weight: 400;
+								color: #999999;
+								font-size: 23rpx;
+								display: flex;
+								align-items: center;
+								justify-content: space-between;
+								.right {
+									color: #3874f6;
+								}
+							}
+						}
 					}
 				}
 			}

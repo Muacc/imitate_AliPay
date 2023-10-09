@@ -46,7 +46,6 @@ export default {
 	},
 	methods: {
 		Go(e) {
-			console.log(e);
 			uni.redirectTo({
 				url: e
 			});
