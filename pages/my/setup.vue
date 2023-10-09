@@ -22,7 +22,7 @@
 								<image class="yjt" src="/static/img/my-img/lh2.png" mode=""></image>
 							</view>
 						</view>
-						<view class="line-x" v-if="B !== item.length - 1"></view>
+						<!-- <view class="line-x" v-if="B !== item.length - 1"></view> -->
 					</view>
 				</view>
 			</view>
@@ -126,7 +126,7 @@ page {
 		border-radius: 15rpx;
 		.list-item {
 			display: flex;
-			padding: 25rpx 0 25rpx 25rpx;
+			padding: 25rpx 0 0 25rpx;
 			.list-item-icon {
 				width: 46rpx;
 				height: 46rpx;
@@ -137,6 +137,8 @@ page {
 				flex: 1;
 				display: flex;
 				flex-direction: column;
+				border-bottom: 1px solid #eee;
+				padding-bottom: 25rpx;
 				.block-rihgt-top {
 					flex: 1;
 					display: flex;

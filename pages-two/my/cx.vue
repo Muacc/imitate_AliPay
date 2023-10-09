@@ -54,11 +54,11 @@
 				<view class="Info">
 					<view class="name">
 						申请查询人姓名：
-						<text>{{ UserData.username }}</text>
+						<text>{{ encryptName(UserData.true_name) }}</text>
 					</view>
 					<view class="id">
 						身份证号码：
-						<text>{{ UserData.cert_number }}</text>
+						<text>{{ hideIdNumber(UserData.cert_number) }}</text>
 					</view>
 				</view>
 				<view class="Search">
@@ -220,6 +220,21 @@ export default {
 	},
 	mounted() {},
 	methods: {
+		encryptName(name) {
+			if (name.length === 2) {
+				return name.replace(/./, '*');
+			} else if (name.length === 3 || name.length === 4) {
+				return name.replace(/^(.)(.*)(.)$/, function (match, firstChar, hiddenPart, lastChar) {
+					var hiddenStr = hiddenPart.replace(/./g, '*');
+					return firstChar + hiddenStr + lastChar;
+				});
+			} else {
+				return name.replace(/^(.)(.*)(.)$/, function (match, firstChar, hiddenPart, lastChar) {
+					var hiddenStr = hiddenPart.replace(/./g, '*');
+					return firstChar + hiddenStr + lastChar;
+				});
+			}
+		},
 		back() {
 			uni.navigateBack();
 		},
@@ -273,6 +288,12 @@ export default {
 					console.log('时间到啦');
 				}
 			}
+		},
+		hideIdNumber(idNumber) {
+			return idNumber.replace(/^(.{6})(.*)(.{4})$/, function (match, prefix, hiddenPart, suffix) {
+				var hiddenStr = hiddenPart.replace(/./g, '*');
+				return prefix + hiddenStr + suffix;
+			});
 		},
 		close() {
 			this.pre = false;

@@ -49,7 +49,8 @@
 						<view class="xy-contonet">同意被授权机构在您的授权期限内将已查询到的住 房公积金信息纳入您本人的征信报告</view>
 					</view>
 					<view class="no-xy-tips">不同意纳入征信报告并不影响本次业务办理</view>
-					<view class="sub-button" @click="subButton">提交</view>
+					<!-- <view class="sub-button" :style="[color:{mobile?'#fff':''}]" @click="subButton">提交</view> -->
+					<view class="sub-button" :style="{ color: mobile ? '#fff' : '' }" @click="subButton">提交</view>
 				</view>
 				<view class="bottom-tips">授权相关机构查询本人住房公积金信息，是指贷款办 理机构或其他相关机构，根据您本人的授权，在授权 期限内直接查询您的住房公积金信息。</view>
 			</view>
@@ -720,6 +721,7 @@ export default {
 	},
 
 	methods: {
+		
 		upMask(e) {
 			this.mask = true;
 			this.clearId = e;
@@ -826,7 +828,9 @@ export default {
 			var day = date.getDate(); // 获取日期
 			var formattedDate = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
 			this.authorizationDate = formattedDate;
-			this.authTimeNumber = e.value;
+			this.authTimeNumber = formattedDate;
+			// this.authTimeNumber = e.value;
+
 			this.showDate = false;
 		},
 
@@ -1030,7 +1034,7 @@ export default {
 			border-radius: 41rpx;
 			font-size: 36rpx;
 			font-weight: 400;
-			color: #fff;
+			color: #b0c1ee;
 			text-align: center;
 			padding: 16rpx 0;
 		}

@@ -20,7 +20,8 @@
 				<view class="left">
 					<view class="h3" v-if="!isShowData">您好，{{ userData.username }}</view>
 					<view class="h3" v-else>您好，{{ userData.true_name }}</view>
-					<view class="h5">账号:{{ userData.account }}</view>
+					<view class="h5" v-if="!isShowData">账号:****</view>
+					<view class="h5" v-else>账号:{{ userData.account }}</view>
 				</view>
 				<image class="right" v-if="!isShowData" src="/static/img/gjj-img/by.png" @click="changeYJ"></image>
 				<image class="right zy" v-else src="/static/img/gjj-img/zy.png" @click="changeYJ"></image>

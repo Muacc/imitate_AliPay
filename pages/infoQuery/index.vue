@@ -95,6 +95,7 @@ export default {
 				font-weight: 400;
 				.title {
 					font-size: 28rpx;
+					margin-bottom: 12rpx;
 					font-weight: 400;
 					color: #000000;
 				}
