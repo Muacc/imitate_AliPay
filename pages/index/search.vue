@@ -449,10 +449,7 @@ export default {
 			];
 			if (this.keyWord !== '') {
 				let result = data.filter((item) => item.title.includes(this.keyWord)).map((item) => item.data);
-				console.log(this.keyWord);
-			} else {
-				console.log('关键词为空，不进行匹配');
-			}
+			} 
 		},
 		clear() {
 			this.isSearch = true;
@@ -812,6 +809,7 @@ page {
 		font-size: 30rpx;
 		text {
 			color: #3874f6;
+			margin-right: 6rpx;
 		}
 	}
 	.page-item-title-right {

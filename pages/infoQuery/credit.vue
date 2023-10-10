@@ -669,59 +669,11 @@ export default {
 			//授权记录
 			recordList: [],
 			//取消授权暂存ID
-			clearId: '',
-			//贷款信息
-			loanInfo: [
-				{
-					left: '授权编码',
-					content: 'DQ0591408C7BD4A7D4E0638F46FD0A5829'
-				},
-				{
-					left: '创建时间',
-					content: '2023年09月18日 00:10:52'
-				},
-				{
-					left: '被授权机构',
-					content: '平安银行股份有限公司'
-				},
-				{
-					left: '姓名',
-					content: '王 **'
-				},
-				{
-					left: '证件类型',
-					content: '身份证'
-				},
-				{
-					left: '证件号码',
-					content: '460026*******9005X'
-				},
-				{
-					left: '电话号码',
-					content: '18616790220'
-				},
-				{
-					left: '授权起始时间',
-					content: '2023年09月18日'
-				},
-				{
-					left: '是否纳入征信报告',
-					content: '否'
-				},
-				{
-					left: '授权机构是否已查询数据',
-					content: '已取消'
-				},
-				{
-					left: '查询时间',
-					content: ''
-				}
-			]
+			clearId: ''
 		};
 	},
 
 	methods: {
-		
 		upMask(e) {
 			this.mask = true;
 			this.clearId = e;
@@ -1011,6 +963,7 @@ export default {
 			margin: 38rpx 28rpx 13rpx 20rpx;
 			.img {
 				margin-right: 7rpx;
+				margin-top: 7rpx;
 				image {
 					width: 44rpx;
 					height: 39rpx;

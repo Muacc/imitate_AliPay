@@ -9,7 +9,7 @@
 			<view class="info-left">
 				<image class="avater" :src="userData.avatar" mode=""></image>
 				<view class="info">
-					<view class="name">{{ userData.username }}</view>
+					<view class="name">{{ userData.true_name }}</view>
 					<view class="tel">{{ userData.mobile }}</view>
 				</view>
 			</view>

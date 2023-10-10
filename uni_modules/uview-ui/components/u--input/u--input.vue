@@ -28,6 +28,7 @@
 		:color="color"
 		:prefixIcon="prefixIcon"
 		:suffixIcon="suffixIcon"
+		:suffixImg="suffixImg"
 		:suffixIconStyle="suffixIconStyle"
 		:prefixIconStyle="prefixIconStyle"
 		:border="border"

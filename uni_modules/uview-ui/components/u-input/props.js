@@ -153,6 +153,11 @@ export default {
 			type: String,
 			default: uni.$u.props.input.suffixIcon
 		},
+		// 输入框后置图片
+		suffixImg: {
+			type: String,
+			default: ''
+		},
 		// 后置图标样式，对象或字符串
 		suffixIconStyle: {
 			type: [String, Object],

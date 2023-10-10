@@ -6,15 +6,28 @@
 				<view class="before-block"></view>
 				个人授权
 			</view>
-			<view class="item" v-for="(A, B) in List" :key="B" @click="Go(A.url)">
+			<view class="item">
 				<view class="icon-box">
-					<image class="icon" :src="A.img" mode=""></image>
+					<image class="icon" src="/static/img/gjj-img/query1.png" mode=""></image>
 				</view>
 				<view class="info">
-					<view class="title">
-						{{ A.title }}
-					</view>
-					{{ A.content }}
+					<view class="title">授权住房公积金管理机构查询本人信息</view>
+					授权相关住房公积金管理机构在办理业务时查询本
+					<br />
+					人住房公积金信息
+				</view>
+			</view>
+			<view class="item" @click="Go('/pages/infoQuery/credit')">
+				<view class="icon-box">
+					<image class="icon" src="/static/img/gjj-img/query2.png" mode=""></image>
+				</view>
+				<view class="info">
+					<view class="title">授权征信系统接入机构查询本人信息</view>
+					授权接入人民银行征信系统的相关金融机构（银
+					<br />
+					行、保险等）在办理授信业务时查询本人住房公积
+					<br />
+					金信息
 				</view>
 			</view>
 		</view>
@@ -28,21 +41,7 @@ export default {
 		navBar
 	},
 	data() {
-		return {
-			List: [
-				{
-					img: '/static/img/gjj-img/query1.png',
-					title: '授权住房公积金管理机构查询本人信息',
-					content: '授权相关住房公积金管理机构在办理业务时查询本人住房公积金信息'
-				},
-				{
-					img: '/static/img/gjj-img/query2.png',
-					title: '授权征信系统接入机构查询本人信息',
-					url: '/pages/infoQuery/credit',
-					content: '授权接入人民银行征信系统的相关金融机构（银行、保险等）在办理授信业务时查询本人住房公积金信息'
-				}
-			]
-		};
+		return {};
 	},
 	methods: {
 		Go(e) {

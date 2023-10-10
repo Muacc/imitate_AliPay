@@ -53,7 +53,7 @@
 			<view class="item-line"></view>
 			<view class="item">
 				<view class="left">身份证号</view>
-				<view class="right">**************{{ userData.cert_number.slice(14) }}</view>
+				<view class="right">**************{{ userData.cert_number ? userData.cert_number.slice(14) : '' }}</view>
 			</view>
 			<view class="item-line"></view>
 			<view class="item">

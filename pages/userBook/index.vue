@@ -20,7 +20,7 @@
 				<view class="dot"></view>
 				随申办小程序用户服务协议
 			</view>
-			<view class="item">
+			<view class="item" style="margin-top: 31rpx">
 				<view class="dot"></view>
 				随申办小程序用户隐私政策
 			</view>
@@ -107,11 +107,12 @@ export default {
 		}
 	}
 	.items {
+		background: #f6f6f6;
+		padding: 30rpx 0 30rpx 30rpx;
 		.item {
 			font-size: 28rpx;
 			font-weight: 400;
 			color: #cab385;
-			margin: 31rpx 29rpx 0;
 			display: flex;
 			align-items: center;
 			.dot {
