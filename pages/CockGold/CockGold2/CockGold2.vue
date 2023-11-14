@@ -1,6 +1,6 @@
 <template>
 	<view class="Main">
-		<navbar Title="补充住房公积金账..."></navbar>
+		<navbar Title="住房公积金账户明..."></navbar>
 		<view class="top">
 			<view class="">精确查询</view>
 			<view class="start-time" @click="Show1">

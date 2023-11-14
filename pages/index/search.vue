@@ -70,13 +70,13 @@
 				<view class="user-subtitle">官方服务 7×24 小时可办</view>
 				<view class="my-gjj">
 					<view class="gjj-top">
-						<image class="avatar" :src="userData.avatar" mode=""></image>
+						<image class="avatar" src="/static/img/wdgjj.png" mode=""></image>
 						<view class="gjj-info">
 							<view class="my-gjj-title">我的公积金</view>
 							<view class="data">{{ userData.username }}丨{{ userData.cert_number_2 }}</view>
 						</view>
-					</view>
-					<view class="user-search">账户查询</view>
+					</view> 
+					<view class="user-search" @click="Go('/pages/gjj/gjj')">账户查询</view>
 				</view>
 				<view class="hot-servers">
 					<view class="hot-servers-title">
@@ -138,17 +138,17 @@
 								<view class="MP-item-main">
 									<view class="main-box">我的不动产</view>
 									<view class="main-box">我的不动产查询</view>
-								</view>
+								</view> 
 							</view>
 						</view>
 						<view class="line-x"></view>
 					</view>
 
-					<view class="MP-item" @click="Go('/pages/gjj/gjj')">
+					<view class="MP-item" @click="Go('/pages/gjj/gjj-details')">
 						<image class="MP-item-left" src="/static/img/my-img/zf1.png"></image>
 						<view class="MP-item-right">
 							<view class="MP-name">
-								全国住房公积金
+								全国住房公积金公共服务
 								<view class="MP-tags">政府</view>
 							</view>
 							<view class="MP-describe">

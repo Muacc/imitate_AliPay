@@ -8,7 +8,15 @@
 					<view class="it2"></view>
 					<view class="line-x">
 						<view class="round1"></view>
-						<view class="line"></view>
+						<view class="line">
+							<view class="text">
+								<image src="/static/15g.png" mode=""></image>
+								查询社保、公积金每次可得
+								<view class="red">15g</view>
+								绿色能量
+								<image style="width: 30rpx; height: 30rpx; margin-left: 10rpx" src="/static/11.png" mode=""></image>
+							</view>
+						</view>
 						<view class="round2"></view>
 					</view>
 					<view class="pos-block">
@@ -249,7 +257,7 @@ page {
 				align-items: center;
 				background-color: #fff;
 				position: relative;
-				height: 36rpx;
+				position: relative;
 				.round1 {
 					position: absolute;
 					left: -18rpx;
@@ -259,8 +267,25 @@ page {
 					background-color: #cbb687;
 				}
 				.line {
-					border-top: 1rpx dashed #ae9763;
 					flex: 1;
+					.text {
+						margin-top: 10rpx;
+						display: flex;
+						align-items: center;
+
+						font-size: 28rpx;
+						font-weight: 400;
+						color: #333333;
+						margin-left: 54rpx;
+						image {
+							width: 50rpx;
+							height: 50rpx;
+							margin-right: 8rpx;
+						}
+						.red {
+							color: #467635;
+						}
+					}
 				}
 				.round2 {
 					position: absolute;

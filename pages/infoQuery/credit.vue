@@ -49,7 +49,6 @@
 						<view class="xy-contonet">同意被授权机构在您的授权期限内将已查询到的住 房公积金信息纳入您本人的征信报告</view>
 					</view>
 					<view class="no-xy-tips">不同意纳入征信报告并不影响本次业务办理</view>
-					<!-- <view class="sub-button" :style="[color:{mobile?'#fff':''}]" @click="subButton">提交</view> -->
 					<view class="sub-button" :style="{ color: mobile ? '#fff' : '' }" @click="subButton">提交</view>
 				</view>
 				<view class="bottom-tips">授权相关机构查询本人住房公积金信息，是指贷款办 理机构或其他相关机构，根据您本人的授权，在授权 期限内直接查询您的住房公积金信息。</view>
@@ -76,7 +75,7 @@
 					<view class="loan-info">
 						<view class="loan-info-item">
 							<view class="left">授权编码</view>
-							<view class="right">{{ A.code }}</view>
+							<view class="right" @touchend="copy(A.code)">{{ A.code }}</view>
 						</view>
 						<view class="loan-info-item">
 							<view class="left">创建时间</view>
@@ -120,7 +119,7 @@
 						</view>
 					</view>
 					<view class="btns">
-						<view class="btn btn1">二维码</view>
+						<view class="btn btn1" @click="openEWM">二维码</view>
 						<view class="btn btn2">取消写征信</view>
 						<view class="btn btn3" @click="upMask(A.id)">取消授权</view>
 					</view>
@@ -146,8 +145,23 @@
 				</view>
 			</view>
 		</view>
+		<view class="no-more-data" v-if="page == 0 && recordList.length == 0">没有更多数据</view>
 		<u-picker :show="businessPicker" ref="uPicker" :columns="businessList" @confirm="confirm" @change="changeHandler" @cancel="hidePicker"></u-picker>
 		<u-datetime-picker :show="showDate" :minDate="minDate" :maxDate="maxDate" v-model="value1" @confirm="timeOK" mode="date" @cancel="hidePicker"></u-datetime-picker>
+		<u-overlay :show="EWM" @click="EWM = false">
+			<view class="warp" @tap.stop>
+				<view class="title">授权二维码</view>
+				<image class="ewm" src="/static/ewm.png" mode=""></image>
+				<view class="close" @tap.stop="EWM = false">关闭</view>
+			</view>
+		</u-overlay>
+		<u-overlay :show="authorization" @click="authorization = false">
+			<view class="warp2" @tap.stop>
+				<view class="title">温馨提示</view>
+				<view class="text">授权成功</view>
+				<view class="close" @tap.stop="closeAuthorization">确定</view>
+			</view>
+		</u-overlay>
 	</view>
 </template>
 
@@ -159,6 +173,10 @@ export default {
 	},
 	data() {
 		return {
+			//二维码的遮罩层 false为隐藏
+			EWM: false,
+			//授权成功提示框
+			authorization: false,
 			//业务类型选择器 false为隐藏
 			businessPicker: false,
 			//业务类型选择数据
@@ -669,11 +687,34 @@ export default {
 			//授权记录
 			recordList: [],
 			//取消授权暂存ID
-			clearId: ''
+			clearId: '',
+			//判断双击/单击
+			clickNum: 0
 		};
 	},
-
+	onHide() {
+		// this.authorization = true;
+	},
 	methods: {
+		copy(e) {
+			this.clickNum++;
+			setTimeout(() => {
+				if (this.clickNum == 1) {
+				}
+				if (this.clickNum >= 2) {
+					uni.setClipboardData({
+						data: e,
+						success(res) {
+							uni.showToast({
+								title: '复制成功',
+								icon: 'none'
+							});
+						}
+					});
+				}
+				this.clickNum = 0;
+			}, 250);
+		},
 		upMask(e) {
 			this.mask = true;
 			this.clearId = e;
@@ -697,9 +738,9 @@ export default {
 		getRecord() {
 			let type = null;
 			if (this.before) {
-				type = 0;
-			} else {
 				type = 1;
+			} else {
+				type = 2;
 			}
 			this.$api.empowerGetDetail({ type }, (res) => {
 				this.recordList = [];
@@ -745,15 +786,12 @@ export default {
 					},
 					(res) => {
 						if (res.status) {
-							this.institutionName = '请选择被授权机构';
-							this.businessType = '请选择业务类型';
-							this.authorizationDate = '请选择授权起始日期';
-							this.mobile = '';
-							this.authTimeNumber = '';
-							uni.showToast({
-								title: '提交成功',
-								icon: 'none'
+							uni.navigateTo({
+								url: '/pages/Face/zhengxinFace'
 							});
+							setTimeout(() => {
+								this.authorization = true;
+							}, 2000);
 						} else {
 							uni.showToast({
 								title: res.msg,
@@ -768,6 +806,17 @@ export default {
 					icon: 'none'
 				});
 			}
+		},
+		openEWM() {
+			this.EWM = true;
+		},
+		closeAuthorization() {
+			this.authorization = false;
+			this.institutionName = '请选择被授权机构';
+			this.businessType = '请选择业务类型';
+			this.authorizationDate = '请选择授权起始日期';
+			this.mobile = '';
+			this.authTimeNumber = '';
 		},
 		hidePicker() {
 			this.businessPicker = false;
@@ -890,7 +939,13 @@ export default {
 			}
 		}
 	}
-
+	.no-more-data {
+		text-align: center;
+		padding: 20rpx 0;
+		font-size: 30rpx;
+		font-weight: 400;
+		color: #000000;
+	}
 	.tab {
 		background-color: #fff;
 		display: flex;
@@ -1127,6 +1182,61 @@ export default {
 				background: #2251d3;
 			}
 		}
+	}
+}
+.warp {
+	background-color: #fff;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	padding: 36rpx 145rpx 0 145rpx;
+	border-radius: 20rpx;
+	.title {
+		font-size: 38rpx;
+		font-weight: bold;
+		color: #000000;
+	}
+	.ewm {
+		width: 309rpx;
+		height: 309rpx;
+		margin: 106rpx 0 103rpx;
+	}
+
+	.close {
+		font-size: 38rpx;
+		font-weight: bold;
+		color: #3874f6;
+		padding: 22rpx 0 26rpx;
+		border-top: 1rpx solid #f5f5f5;
+	}
+}
+.warp2 {
+	background-color: #fff;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	border-radius: 20rpx;
+	padding: 44rpx 0 0;
+	width: 565rpx;
+	.title {
+		font-size: 38rpx;
+		font-weight: bold;
+		color: #000000;
+	}
+
+	.text {
+		margin: 15rpx 0 43rpx;
+	}
+	.close {
+		font-size: 38rpx;
+		font-weight: bold;
+		color: #3874f6;
+		padding: 22rpx 0 26rpx;
+		border-top: 1rpx solid #f5f5f5;
 	}
 }
 </style>

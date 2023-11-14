@@ -42,7 +42,7 @@
 						<image src="/static/img/gjj-img/home.png"></image>
 						我的不动产
 					</view>
-					<view class="right">
+					<view class="right" @click="GoHome">
 						<image class="sc" src="/static/img/gjj-img/sc.png"></image>
 						<image class="jn" src="/static/img/gjj-img/jn.png"></image>
 					</view>
@@ -307,6 +307,11 @@ export default {
 				t.imgs = res.data;
 				if (res.data.code === 2) {
 				}
+			});
+		},
+		GoHome() {
+			uni.reLaunch({
+				url: '/pages/index/index'
 			});
 		},
 		hei(e) {

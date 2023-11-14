@@ -24,13 +24,13 @@
 				正常缴存
 			</view>
 			<view class="user-top">
-				<image class="avatar" :src="userData.avatar"></image>
+				<image class="avatar" src="/static/img/gjj-img/wdtx.png"></image>
 				<view class="info">
 					<view class="name">
 						{{ datadata.username }}
 					</view>
 					<view class="code">账户： {{ userData.account }}</view>
-				</view>
+				</view> 
 			</view>
 			<view class="user-middle">缴存单位：{{ datadata.company_name }}</view>
 			<view class="user-bottom">

@@ -60,30 +60,32 @@
 		<view class="ModuleList">
 			<view class="ModuleItem">
 				<image src="/static/yyzq.png" mode="widthFix"></image>
-				互联网医院专区
+				个人社保缴费
+			</view>
+			<view class="ModuleItem" @click="Go('/pages/ThreeGold/ThreeGold')">
+				<image src="/static/sjzd.png" mode="widthFix"></image>
+				<image class="nl" src="/static/9.png" mode=""></image>
+				三金账单
 			</view>
 			<view class="ModuleItem">
-				<image src="/static/More/6008.png" mode="widthFix"></image>
-				个人纳税查询
-			</view>
-			<view class="ModuleItem">
-				<image src="/static/jzz.png" mode="widthFix"></image>
-				居住证办理
-			</view>
-			<view class="ModuleItem">
-				<image src="/static/hs.png" mode="widthFix"></image>
-				核酸采样点
+				<image src="/static/jzzbl.png" mode="widthFix"></image>
+				居住证办理...
 			</view>
 			<view class="ModuleItem">
 				<image src="/static/ht.png" mode="widthFix"></image>
 				红途
 			</view>
+
 			<view class="ModuleItem">
-				<image src="/static/hscx.png" mode="widthFix"></image>
-				核酸查询
+				<image src="/static/5896.png" mode="widthFix"></image>
+				租赁市场租...
 			</view>
 			<view class="ModuleItem" @click="Go('/pages/My/CX')">
-				<image src="/static/zf.png" mode="widthFix"></image>
+				<image src="/static/5885.png" mode="widthFix"></image>
+				公共招聘
+			</view>
+			<view class="ModuleItem">
+				<image src="/static/5886.png" mode="widthFix"></image>
 				我要租房
 			</view>
 			<view class="ModuleItem" @click="Go('/pages/more/more')">
@@ -420,10 +422,17 @@ export default {
 			align-items: center;
 			flex-direction: column;
 			margin-bottom: 39rpx;
-
+			position: relative;
 			image {
 				width: 70rpx;
 				margin-bottom: 20rpx;
+			}
+			.nl {
+				width: 101rpx;
+				height: 37rpx;
+				position: absolute;
+				top: -13rpx;
+				right: -20rpx;
 			}
 		}
 	}

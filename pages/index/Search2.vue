@@ -15,16 +15,16 @@
 				@confirm="serach(keyname)"
 				@change="UpsearchContent"
 			></u--input>
-			<view class="Clear" @click="back">取消</view>
+			<view v-if="showInOne" class="Clear" @click="back">取消</view>
 		</view>
 		<view v-if="show" style="margin-top: 40rpx">
-			<!-- <view class="History">
-				<view class="HisTitle">历史搜索</view>
+			<view class="History">
+				<view class="SearchTitle" style="padding-bottom: 0;">历史搜索</view>
 				<image class="HisDel" src="/static/a66.png" style="width: 40rpx; height: 40rpx" mode=""></image>
 			</view>
 			<view class="HisBox" @click="Go('bdc')">我的不动产</view>
 			<view class="HisBox" style="margin-left: 20rpx" @click="Go('公积金')">公积金</view>
-			 -->
+			
 			<view v-if="showInOne">
 				<view class="SearchTitle">大家都在搜</view>
 				<view class="Box">

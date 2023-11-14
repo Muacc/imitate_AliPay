@@ -9,12 +9,13 @@
 				</view>
 				<view class="right">
 					<image class="sc" src="/static/img/gjj-img/sc.png"></image>
-					<image class="jn" src="/static/img/gjj-img/jn.png"></image>
+					<image @click="GoHome" class="jn" src="/static/img/gjj-img/jn.png"></image>
 				</view>
 			</view>
 		</view>
 		<view class="block" :style="{ height: $store.state.BH + 10 + 'px' }"></view>
 		<view class="userInfo">
+			<image src="/static/171.png" class="energy" mode=""></image>
 			<image src="/static/img/gjj-img/bg.png" class="bg" mode=""></image>
 			<view class="info-box">
 				<view class="left">
@@ -161,7 +162,7 @@
 				</view>
 				<view class="item-line"></view>
 				<view class="item">
-					<view class="left">当前所在单位</view>
+					<view class="left">当前所在单位名称</view>
 					<view class="right">{{ userData.company_name || '' }}</view>
 				</view>
 				<view class="item-line"></view>
@@ -216,18 +217,20 @@ export default {
 				{
 					icon: '/static/img/gjj-img/1.png',
 					title: '补充住房公积金账户信息',
-					subtitle: '账户信息查询'
+					subtitle: '账户信息查询',
+					url: '/pages/CockGold/CockGold'
 				},
 				{
 					icon: '/static/img/gjj-img/2.png',
 					title: '住房公积金账户明细查询',
 					subtitle: '具体明细查询',
-					url: '/pages/gjj/gjj-details'
+					url: '/pages/CockGold/CockGold2/CockGold2'
 				},
 				{
 					icon: '/static/img/gjj-img/3.png',
 					title: '补充住房公积金账户明细查询',
-					subtitle: '具体明细查询'
+					subtitle: '具体明细查询',
+					url: '/pages/CockGold/CockGold'
 				}
 			],
 			relatedServices: [
@@ -249,6 +252,9 @@ export default {
 		await this.getUserInfo();
 	},
 	methods: {
+		Goback() {
+			uni.navigateBack();
+		},
 		Go(e) {
 			if (e) {
 				uni.navigateTo({
@@ -266,6 +272,11 @@ export default {
 		},
 		changeExpand() {
 			this.isexpand = !this.isexpand;
+		},
+		GoHome() {
+			uni.reLaunch({
+				url: '/pages/index/index'
+			});
 		}
 	}
 };
@@ -318,6 +329,13 @@ export default {
 	.userInfo {
 		position: relative;
 		padding: 32rpx;
+		.energy {
+			width: 76rpx;
+			height: 76rpx;
+			position: absolute;
+			bottom: -38rpx;
+			right: 0;
+		}
 		.bg {
 			position: absolute;
 			top: 0;

@@ -7,7 +7,7 @@
 					<image src="/static/img/gjj-img/zzz.png" mode=""></image>
 					{{ Title }}
 				</view>
-				<view class="nav-right">
+				<view class="nav-right" @click="GoHome">
 					<image class="sc" src="/static/img/gjj-img/887.png" mode=""></image>
 					<image class="jn" src="/static/img/gjj-img/46.png" mode=""></image>
 				</view>
@@ -25,6 +25,11 @@ export default {
 		return {};
 	},
 	methods: {
+		GoHome() {
+			uni.reLaunch({
+				url: '/pages/index/index'
+			});
+		},
 		height() {
 			let num1 = parseInt(this.$store.state.topH);
 			let num2 = parseInt(this.$store.state.BH + 10);

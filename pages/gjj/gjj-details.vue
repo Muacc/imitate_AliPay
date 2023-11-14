@@ -3,7 +3,7 @@
 		<nav :style="{ height: $store.state.BH + 10 + 'px' }"></nav>
 		<view class="top-nav">
 			<image class="logo" src="/static/img/gjj-img/779.png" mode=""></image>
-			<view class="jiaonang" :style="{ top: $store.state.BH + 20 + 'px' }">
+			<view class="jiaonang" :style="{ top: $store.state.BH + 20 + 'px' }" @click="GoHome">
 				<image class="sc" src="/static/img/gjj-img/887.png" mode=""></image>
 				<image class="jn" src="/static/img/gjj-img/46.png" mode=""></image>
 			</view>
@@ -26,7 +26,7 @@
 				<view class="top-right" v-else @click="getUser">点击登录</view>
 			</view>
 			<view class="bottom">
-				<view class="bottom-item">
+				<view class="bottom-item" @click="GoTo('/pages/gjj/gjj-detail-list?tabIndex=1')">
 					<view class="bottom-top">最近缴存（元）</view>
 					<view class="bottom-middle" v-if="byj">
 						******
@@ -39,7 +39,7 @@
 					<view class="bottom-bottom" v-if="byj">---</view>
 					<view class="bottom-bottom" v-else>{{ datadata.new_in_time }} 缴存</view>
 				</view>
-				<view class="bottom-item">
+				<view class="bottom-item" @click="GoTo('/pages/gjj/gjj-detail-list?tabIndex=2')">
 					<view class="bottom-top">最近提取（元）</view>
 					<view class="bottom-middle" v-if="byj">
 						******
@@ -82,7 +82,7 @@
 			<image class="more" src="/static/img/gjj-img/780.png" mode=""></image>
 		</view>
 		<image class="bottom-banner" src="/static/img/gjj-img/1118.png" mode=""></image>
-		<view class="bottom-center"> 
+		<view class="bottom-center">
 			<view class="p">该信息来源于上海市公积金管理中心</view>
 			<view class="p">中心电话：12329</view>
 		</view>
@@ -135,6 +135,20 @@ export default {
 					url: e
 				});
 			}
+		},
+		GoTo(e) {
+			if (this.isLoginTwo) {
+				if (e) {
+					uni.navigateTo({
+						url: e
+					});
+				}
+			}
+		},
+		GoHome() {
+			uni.reLaunch({
+				url: '/pages/index/index'
+			});
 		},
 		showData() {
 			if (this.$store.state.isLoginTwo) {
